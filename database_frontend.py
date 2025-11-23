@@ -4,7 +4,7 @@ import database_backend
 
 win=Tk()
 
-win.wm_title('MY DAILY ROUTINE DATABASE')
+win.wm_title('MY DAILY ROUTINE APP')
 
 def get_selected_row(event):
     global selected_row
@@ -24,7 +24,6 @@ def get_selected_row(event):
     e6.delete(0,END)
     e6.insert(END,selected_row[2])
 
-
 def delete_command():
     database_backend.delete(selected_row[0])
     list.delete(ANCHOR)
@@ -39,7 +38,6 @@ def search_command():
     list.delete(0,END)
     for rows in database_backend.search(date_text.get(),earnings_text.get(),exercise_text.get(),study_text.get(),diet_text.get(),python_text.get()):
         list.insert(END,rows)
-
 
 def add_command():
         database_backend.insert(date_text.get(),earnings_text.get(),exercise_text.get(),study_text.get(),diet_text.get(),python_text.get())
