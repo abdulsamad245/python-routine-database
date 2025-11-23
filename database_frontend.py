@@ -27,19 +27,13 @@ def get_selected_row(event):
 
 def delete_command():
     database_backend.delete(selected_row[0])
-    #list.delete(list.curselection()[0],list.curselection()[0])
     list.delete(ANCHOR)
     print(selected_row[0])
-
-    
-    
-
 
 def view_command():
     list.delete(0,END)
     for rows in database_backend.view():
         list.insert(END,rows)
-
 
 def search_command():
     list.delete(0,END)
@@ -51,14 +45,6 @@ def add_command():
         database_backend.insert(date_text.get(),earnings_text.get(),exercise_text.get(),study_text.get(),diet_text.get(),python_text.get())
         list.delete(0,END)
         list.insert(END,(date_text.get(),earnings_text.get(),exercise_text.get(),study_text.get(),diet_text.get(),python_text.get()))
-
-
-
-
-
-
-
-
 
 l1=Label(win,text='Date')
 l1.grid(row=0,column=0)
@@ -108,31 +94,21 @@ list.grid(row=3,column=0,rowspan=9,columnspan=2)
 sb= tkinter.Scrollbar(win,command=list.yview)
 sb.grid(row=3,column=2,columnspan=1,rowspan=9)
 
-
 b1=Button(win,text='ADD',width=12,pady=5,command=add_command)
 b1.grid(row=3,column=3)
-
-
 
 b2=Button(win,text='Search',width=12,pady=5,command=search_command)
 b2.grid(row=4,column=3)
 
-
 b3=Button(win,text='Delete ',width=12,pady=5,command=delete_command)
 b3.grid(row=5,column=3)
-
 
 b4=Button(win,text='View All',width=12,pady=5,command=view_command)
 b4.grid(row=6,column=3)
 
-
 b5=Button(win,text='Close',width=12,pady=5,command=win.destroy)
 b5.grid(row=7,column=3)
 
-
 list.bind('<<ListboxSelect>>',get_selected_row)
-
-
-
 
 win.mainloop()
